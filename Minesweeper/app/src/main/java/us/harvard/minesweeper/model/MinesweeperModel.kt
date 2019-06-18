@@ -11,12 +11,18 @@ object MinesweeperModel {
         for (i in 0..4) {
             for (j in 0..4) {
                 fieldMatrix[i][j].wasClicked = false
-                if (i==j) {
-                    fieldMatrix[i][j].isBomb = true
-                }
-
+                fieldMatrix[i][j].isBomb = false
+                fieldMatrix[i][j].isFlagged = false
+                fieldMatrix[i][j].minesAround = 0
             }
         }
+
+        // hardcoding Bombs
+        fieldMatrix[0][0].isBomb = true
+        fieldMatrix[1][1].isBomb = true
+
     }
 
 }
+
+
