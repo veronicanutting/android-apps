@@ -46,7 +46,7 @@ class MinesweeperView(context: Context?, attrs: AttributeSet?) : View(context, a
 
         // draw grid
         drawGrid(canvas)
-        drawBombs(canvas)
+        drawFields(canvas)
     }
 
 
@@ -72,30 +72,29 @@ class MinesweeperView(context: Context?, attrs: AttributeSet?) : View(context, a
     }
 
 
-    private fun drawBombs(canvas: Canvas?) {
+    private fun drawFields(canvas: Canvas?) {
 
-        // iterate over grid and draw X or O according to model
         for (i in 0..4) {
             for (j in 0..4) {
 
-                // visible not flagged = green text
-                if (fieldMatrix[i][j].wasClicked && !fieldMatrix[i][j].isFlagged) {
+                if (fieldMatrix[i][j].wasClicked) {
 
-                    paintText!!.setColor(Color.GREEN)
-                    canvas?.drawText(fieldMatrix[i][j].minesAround.toString(),
-                        (i * width / 5 + width / 10).toFloat(),
-                        (j * height / 5 + height / 10).toFloat(), paintText!!)
+                        if (!fieldMatrix[i][j].isFlagged) {
 
-                }
-                // visible and flagged = white circle
-                else if (fieldMatrix[i][j].wasClicked && fieldMatrix[i][j].isFlagged) {
+                            canvas?.drawText(fieldMatrix[i][j].minesAround.toString(),
+                                (i * width / 5 + width / 10).toFloat(),
+                                (j * height / 5 + height / 10).toFloat(), paintText!!)
 
-                    paintLine!!.setColor(Color.WHITE)
+                        }
+                        else if (fieldMatrix[i][j].wasClicked && fieldMatrix[i][j].isFlagged) {
 
-                    val centerX = (i * width / 5 + width / 10).toFloat()
-                    val centerY = (j * height / 5 + height / 10).toFloat()
-                    val radius = height / (5*3) //??
-                    canvas?.drawCircle(centerX, centerY, radius.toFloat(), paintLine!!)
+                            paintLine!!.setColor(Color.WHITE)
+
+                            val centerX = (i * width / 5 + width / 10).toFloat()
+                            val centerY = (j * height / 5 + height / 10).toFloat()
+                            val radius = height / (5 * 3) //??
+                            canvas?.drawCircle(centerX, centerY, radius.toFloat(), paintLine!!)
+                        }
 
                 }
             }
@@ -113,16 +112,18 @@ class MinesweeperView(context: Context?, attrs: AttributeSet?) : View(context, a
         if (tX < 5 && tY < 5 && !fieldMatrix[tX][tY].wasClicked) {
             fieldMatrix[tX][tY].wasClicked = true
 
-            if (fieldMatrix[tX][tY].isBomb && !flagMode) {
-                endGame("You clicked on a bomb while not in flag mode. Boom!!")
-
-            } else if (fieldMatrix[tX][tY].isBomb && flagMode) {
-                fieldMatrix[tX][tY].isFlagged = true
-
-            } else if (!(fieldMatrix[tX][tY].isBomb) && flagMode) {
-                endGame("You've made a fatal flagging error!!")
-
+            if (flagMode) {
+                if (fieldMatrix[tX][tY].isBomb) {
+                    fieldMatrix[tX][tY].isFlagged = true
+                } else {
+                    endGame("You've made a fatal flagging error!!")
+                }
+            } else {
+                if (fieldMatrix[tX][tY].isBomb) {
+                    endGame("You clicked on a bomb while not in flag mode. Boom!!")
+                }
             }
+
             invalidate()
         }
         return super.onTouchEvent(event)

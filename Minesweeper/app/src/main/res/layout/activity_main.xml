@@ -20,7 +20,6 @@
                 android:id="@+id/vMinesweeper"
                 android:layout_width="300dp"
                 android:layout_height="300dp"/>
-
     </LinearLayout>
 
     <Button
@@ -34,6 +33,5 @@
             android:text="@string/flag_mode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-
 
 </LinearLayout>
