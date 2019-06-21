@@ -36,6 +36,7 @@ class MinesweeperView(context: Context?, attrs: AttributeSet?) : View(context, a
         paintText?.color = Color.GREEN
     }
 
+    val GRID_SIZE : Int  = 5
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
@@ -59,13 +60,13 @@ class MinesweeperView(context: Context?, attrs: AttributeSet?) : View(context, a
             width.toFloat(), height.toFloat(), paintLine!!)
 
         // draw horizontal and vertical lines
-        for (i in 1..4) {
+        for (i in 1..GRID_SIZE-1) {
             canvas?.drawLine(
-                0f, i * height.toFloat() / 5,
-                width.toFloat(), i * height.toFloat() / 5, paintLine!!)
+                0f, i * height.toFloat() / GRID_SIZE,
+                width.toFloat(), i * height.toFloat() / GRID_SIZE, paintLine!!)
 
             canvas?.drawLine(
-                i * width.toFloat() / 5, 0f, i * width.toFloat() / 5,
+                i * width.toFloat() / GRID_SIZE, 0f, i * width.toFloat() / GRID_SIZE,
                 height.toFloat(), paintLine!!)
         }
 
@@ -74,25 +75,25 @@ class MinesweeperView(context: Context?, attrs: AttributeSet?) : View(context, a
 
     private fun drawFields(canvas: Canvas?) {
 
-        for (i in 0..4) {
-            for (j in 0..4) {
+        for (i in 1..GRID_SIZE) {
+            for (j in 1..GRID_SIZE) {
 
                 if (fieldMatrix[i][j].wasClicked) {
 
                         if (!fieldMatrix[i][j].isFlagged) {
 
                             canvas?.drawText(fieldMatrix[i][j].minesAround.toString(),
-                                (i * width / 5 + width / 10).toFloat(),
-                                (j * height / 5 + height / 10).toFloat(), paintText!!)
+                                ((i-1) * width / GRID_SIZE + width / 2*GRID_SIZE).toFloat(),
+                                ((j-1) * height / GRID_SIZE + height / 2*GRID_SIZE).toFloat(), paintText!!)
 
                         }
                         else if (fieldMatrix[i][j].wasClicked && fieldMatrix[i][j].isFlagged) {
 
                             paintLine!!.setColor(Color.WHITE)
 
-                            val centerX = (i * width / 5 + width / 10).toFloat()
-                            val centerY = (j * height / 5 + height / 10).toFloat()
-                            val radius = height / (5 * 3) //??
+                            val centerX = ((i-1) * width / GRID_SIZE + width / 2*GRID_SIZE).toFloat()
+                            val centerY = ((j-1) * height / GRID_SIZE + height / 2*GRID_SIZE).toFloat()
+                            val radius = height / (GRID_SIZE * 3) //??
                             canvas?.drawCircle(centerX, centerY, radius.toFloat(), paintLine!!)
                         }
 
@@ -105,21 +106,21 @@ class MinesweeperView(context: Context?, attrs: AttributeSet?) : View(context, a
     override fun onTouchEvent(event: MotionEvent): Boolean {
 
         // store where you clicked
-        val tX = event.x.toInt() / (width /5)
-        val tY = event.y.toInt() / (height /5)
+        val tX = event.x.toInt() / (width /GRID_SIZE)
+        val tY = event.y.toInt() / (height /GRID_SIZE)
         val flagMode = (context as MainActivity).isFlagChecked()
 
-        if (tX < 5 && tY < 5 && !fieldMatrix[tX][tY].wasClicked) {
-            fieldMatrix[tX][tY].wasClicked = true
+        if (tX < GRID_SIZE && tY < GRID_SIZE && !fieldMatrix[tX+1][tY+1].wasClicked) {
+            fieldMatrix[tX+1][tY+1].wasClicked = true
 
             if (flagMode) {
-                if (fieldMatrix[tX][tY].isBomb) {
-                    fieldMatrix[tX][tY].isFlagged = true
+                if (fieldMatrix[tX+1][tY+1].isBomb) {
+                    fieldMatrix[tX+1][tY+1].isFlagged = true
                 } else {
                     endGame("You've made a fatal flagging error!!")
                 }
             } else {
-                if (fieldMatrix[tX][tY].isBomb) {
+                if (fieldMatrix[tX+1][tY+1].isBomb) {
                     endGame("You clicked on a bomb while not in flag mode. Boom!!")
                 }
             }
