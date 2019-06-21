@@ -10,6 +10,7 @@ import android.widget.Toast
 import us.harvard.minesweeper.MainActivity
 import us.harvard.minesweeper.model.MinesweeperModel
 import us.harvard.minesweeper.model.MinesweeperModel.fieldMatrix
+import us.harvard.minesweeper.model.MinesweeperModel.totalBombs
 
 
 class MinesweeperView(context: Context?, attrs: AttributeSet?) : View(context, attrs)
@@ -106,6 +107,7 @@ class MinesweeperView(context: Context?, attrs: AttributeSet?) : View(context, a
         val tX = event.x.toInt() / (width /gridSize)
         val tY = event.y.toInt() / (height /gridSize)
         val flagMode = (context as MainActivity).isFlagChecked()
+        var bombsFound = 0
 
         if (tX < gridSize && tY < gridSize && !fieldMatrix[tX+1][tY+1].wasClicked) {
             fieldMatrix[tX+1][tY+1].wasClicked = true
@@ -113,13 +115,17 @@ class MinesweeperView(context: Context?, attrs: AttributeSet?) : View(context, a
             if (flagMode) {
                 if (fieldMatrix[tX+1][tY+1].isBomb) {
                     fieldMatrix[tX+1][tY+1].isFlagged = true
+                    bombsFound ++
+                    if (bombsFound == MinesweeperModel.totalBombs) {
+                        endGame("Congratulations! You found all the bombs! You win!")
+                    }
                 } else {
-                    endGame("You've made a fatal flagging error!!")
+                    endGame("Uh oh! You made a fatal flagging error. You lose!")
                 }
 
             } else {
                 if (fieldMatrix[tX+1][tY+1].isBomb) {
-                    endGame("You clicked on a bomb while not in flag mode. Boom!!")
+                    endGame("Boom! You clicked on a bomb. You lose!")
                 }
             }
 
