@@ -40,18 +40,18 @@ object MinesweeperModel {
         var y : Int = 0
         var bombs_placed : Int = 0
 
-        Log.d("RAND", "GENERATING RANDOM NUMS FOR BOMB PLACEMENT")
+        Log.d("RAND", "BOMB PLACEMENT")
         while (bombs_placed < NUM_BOMBS) {
             x = Random.nextInt(1, GRID_SIZE+1)
             y = Random.nextInt(1, GRID_SIZE+1)
-            Log.d("RAND", "Bomb #$bombs_placed is at (${x-1}, ${y-1})")
 
             if (!fieldMatrix[x][y].isBomb) {
                 fieldMatrix[x][y].isBomb = true
                 bombs_placed++
+                Log.d("RAND", "Bomb #$bombs_placed is at fieldMatrix ($x, $y)")
 
-                // now will do mines around stuff
 
+                // PADDING
                 // top left
                 if(!fieldMatrix[x-1][y-1].isBomb && fieldMatrix[x-1][y-1].minesAround > -1) {
                     fieldMatrix[x-1][y-1].minesAround ++
@@ -90,55 +90,12 @@ object MinesweeperModel {
                 if(!fieldMatrix[x+1][y+1].isBomb && fieldMatrix[x+1][y+1].minesAround > -1) {
                     fieldMatrix[x+1][y+1].minesAround ++
                 }
+
             }
 
         }
 
-        /*
-        // hardcoding bombs
-        fieldMatrix[0][0].isBomb = true
-        fieldMatrix[1][1].isBomb = true
-        fieldMatrix[2][2].isBomb = true
-*/
-
-        // CALCULATES MINESAROUND VALUES FOR WHOLE BOARD
-        // this could go in the for loop that generates bombs
-
-        /*
-
-        // would be something like
-
-
-         */
-
-
-
-
-/*
-        // hardcoding minesAround values
-        fieldMatrix[0][1].minesAround = 2
-        fieldMatrix[0][2].minesAround = 1
-        fieldMatrix[1][0].minesAround = 2
-        fieldMatrix[1][2].minesAround = 2
-        fieldMatrix[1][3].minesAround = 1
-        fieldMatrix[2][0].minesAround = 1
-        fieldMatrix[2][1].minesAround = 2
-        fieldMatrix[2][3].minesAround = 1
-        fieldMatrix[2][3].minesAround = 1
-        fieldMatrix[3][1].minesAround = 1
-        fieldMatrix[3][2].minesAround = 1
-        fieldMatrix[3][3].minesAround = 1
-        */
-
     }
-
-    /*
-    //private fun generateRandom(): Random = Random(5)
-
-    private fun generateRandom(a : Int) : Int {
-        val rand = java.util.Random(a.toLong())
-        return rand.nextInt(5) // number between 0 and 99 inclusive
-    }*/
 
 }
 

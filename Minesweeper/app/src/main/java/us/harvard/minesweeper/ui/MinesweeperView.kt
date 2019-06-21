@@ -46,8 +46,9 @@ class MinesweeperView(context: Context?, attrs: AttributeSet?) : View(context, a
             width.toFloat(),height.toFloat(), paintBackGround!!)
 
         // draw grid
-        drawGrid(canvas)
         drawFields(canvas)
+
+        drawGrid(canvas)
     }
 
 
@@ -75,24 +76,29 @@ class MinesweeperView(context: Context?, attrs: AttributeSet?) : View(context, a
 
     private fun drawFields(canvas: Canvas?) {
 
+        Log.d("DRAW_FIELD", "DRAWING FIELDS")
+
         for (i in 1..GRID_SIZE) {
             for (j in 1..GRID_SIZE) {
 
                 if (fieldMatrix[i][j].wasClicked) {
+                    Log.d("DRAW_FIELD", "Apparently fieldMatrix ($i,$j) was clicked")
 
-                        if (!fieldMatrix[i][j].isFlagged) {
+                    if (!fieldMatrix[i][j].isFlagged) {
+                        Log.d("DRAW_FIELD", "We should draw the number ${fieldMatrix[i][j].minesAround.toString()}")
 
-                            canvas?.drawText(fieldMatrix[i][j].minesAround.toString(),
-                                ((i-1) * width / GRID_SIZE + width / 2*GRID_SIZE).toFloat(),
-                                ((j-1) * height / GRID_SIZE + height / 2*GRID_SIZE).toFloat(), paintText!!)
+                        canvas?.drawText(fieldMatrix[i][j].minesAround.toString(),
+                                (((i-1) * width) / GRID_SIZE + width / (2*GRID_SIZE)).toFloat(),
+                                (((j-1) * height) / GRID_SIZE + height / (2*GRID_SIZE)).toFloat(), paintText!!)
 
-                        }
+                    }
                         else if (fieldMatrix[i][j].wasClicked && fieldMatrix[i][j].isFlagged) {
+                            Log.d("DRAW_FIELD", "We should draw flag at grid (${i-1},${j-1})")
 
                             paintLine!!.setColor(Color.WHITE)
 
-                            val centerX = ((i-1) * width / GRID_SIZE + width / 2*GRID_SIZE).toFloat()
-                            val centerY = ((j-1) * height / GRID_SIZE + height / 2*GRID_SIZE).toFloat()
+                            val centerX = (((i-1) * width) / GRID_SIZE + width / (2*GRID_SIZE)).toFloat()
+                            val centerY = (((j-1) * height) / GRID_SIZE + height / (2*GRID_SIZE)).toFloat()
                             val radius = height / (GRID_SIZE * 3) //??
                             canvas?.drawCircle(centerX, centerY, radius.toFloat(), paintLine!!)
                         }
@@ -110,7 +116,11 @@ class MinesweeperView(context: Context?, attrs: AttributeSet?) : View(context, a
         val tY = event.y.toInt() / (height /GRID_SIZE)
         val flagMode = (context as MainActivity).isFlagChecked()
 
+        Log.d("ON_TOUCH", "Apparently ($tX,$tY) was touched on grid")
+
         if (tX < GRID_SIZE && tY < GRID_SIZE && !fieldMatrix[tX+1][tY+1].wasClicked) {
+            Log.d("ON_TOUCH", "Corresponds to fieldMatrix (${tX+1},${tY+1}), which had not been previously clicked")
+
             fieldMatrix[tX+1][tY+1].wasClicked = true
 
             if (flagMode) {
