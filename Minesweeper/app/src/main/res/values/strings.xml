@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MINESWEEPER</string>
+    <string name="app_name">Minesweeper</string>
     <string name="restart">RESTART</string>
     <string name="flag_mode">FLAG MODE?</string>
     <string name="easy">EASY</string>

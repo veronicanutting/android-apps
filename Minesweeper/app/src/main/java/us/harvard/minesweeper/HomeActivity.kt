@@ -12,7 +12,6 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
         btnStart.setOnClickListener {
-
             startActivity(
                 Intent(this@HomeActivity,
                     MainActivity::class.java)

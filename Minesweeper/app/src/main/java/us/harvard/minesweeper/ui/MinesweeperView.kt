@@ -7,10 +7,10 @@ import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
+import us.harvard.minesweeper.HomeActivity
 import us.harvard.minesweeper.MainActivity
 import us.harvard.minesweeper.model.MinesweeperModel
 import us.harvard.minesweeper.model.MinesweeperModel.fieldMatrix
-
 
 class MinesweeperView(context: Context?, attrs: AttributeSet?) : View(context, attrs)
 {
@@ -33,7 +33,6 @@ class MinesweeperView(context: Context?, attrs: AttributeSet?) : View(context, a
         paintText?.textSize = 50f
     }
 
-    // GET FROM INPUT
     val gridSize : Int = 5
     val totalBombs : Int = 3
 

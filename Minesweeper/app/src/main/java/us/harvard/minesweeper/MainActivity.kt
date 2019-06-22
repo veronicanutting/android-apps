@@ -16,7 +16,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnHome.setOnClickListener {
-
             var intentHome = Intent(this@MainActivity,
                 HomeActivity::class.java)
 
