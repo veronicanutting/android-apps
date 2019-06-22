@@ -66,6 +66,7 @@
 
         <RadioButton
                 android:text="@string/easy"
+                android:checked="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" android:id="@+id/rbtnEasy"
                 app:layout_constraintStart_toStartOf="@+id/guideline3" android:layout_marginLeft="8dp"

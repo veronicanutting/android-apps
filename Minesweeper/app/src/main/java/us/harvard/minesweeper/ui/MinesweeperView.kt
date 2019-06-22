@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_home.view.*
 import us.harvard.minesweeper.HomeActivity
 import us.harvard.minesweeper.MainActivity
 import us.harvard.minesweeper.model.MinesweeperModel
@@ -34,6 +35,7 @@ class MinesweeperView(context: Context?, attrs: AttributeSet?) : View(context, a
     }
 
     val gridSize : Int = 5
+
     val totalBombs : Int = 3
 
     override fun onDraw(canvas: Canvas?) {
