@@ -10,7 +10,6 @@ import android.widget.Toast
 import us.harvard.minesweeper.MainActivity
 import us.harvard.minesweeper.model.MinesweeperModel
 import us.harvard.minesweeper.model.MinesweeperModel.fieldMatrix
-import us.harvard.minesweeper.model.MinesweeperModel.totalBombs
 
 
 class MinesweeperView(context: Context?, attrs: AttributeSet?) : View(context, attrs)

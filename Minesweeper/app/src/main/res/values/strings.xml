@@ -1,5 +1,12 @@
 <resources>
-    <string name="app_name">Minesweeper</string>
-    <string name="restart">(Re)Start</string>
-    <string name="flag_mode">Flag Mode?</string>
+    <string name="app_name">MINESWEEPER</string>
+    <string name="restart">RESTART</string>
+    <string name="flag_mode">FLAG MODE?</string>
+    <string name="easy">EASY</string>
+    <string name="medium">MEDIUM</string>
+    <string name="hard">HARD</string>
+    <string name="expert">EXPERT</string>
+    <string name="start">START</string>
+    <string name="minesweeper">MINESWEEPER</string>
+    <string name="Home">HOME</string>
 </resources>
