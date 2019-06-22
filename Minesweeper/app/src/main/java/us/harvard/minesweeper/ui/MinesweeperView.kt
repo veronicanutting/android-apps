@@ -101,13 +101,14 @@ class MinesweeperView(context: Context?, attrs: AttributeSet?) : View(context, a
 
     }
 
+    var bombsFound : Int = 0
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
 
         val tX = event.x.toInt() / (width /gridSize)
         val tY = event.y.toInt() / (height /gridSize)
         val flagMode = (context as MainActivity).isFlagChecked()
-        var bombsFound = 0
+        Log.d("ONTOUCH", "At beginning, bombsFound is $bombsFound")
 
         if (tX < gridSize && tY < gridSize && !fieldMatrix[tX+1][tY+1].wasClicked) {
             fieldMatrix[tX+1][tY+1].wasClicked = true
@@ -115,7 +116,9 @@ class MinesweeperView(context: Context?, attrs: AttributeSet?) : View(context, a
             if (flagMode) {
                 if (fieldMatrix[tX+1][tY+1].isBomb) {
                     fieldMatrix[tX+1][tY+1].isFlagged = true
-                    bombsFound ++
+                    bombsFound++
+                    Log.d("ONTOUCH", "We should be incrementing bombs found counter")
+
                     if (bombsFound == MinesweeperModel.totalBombs) {
                         endGame("Congratulations! You found all the bombs! You win!")
                     }
@@ -129,6 +132,7 @@ class MinesweeperView(context: Context?, attrs: AttributeSet?) : View(context, a
                 }
             }
 
+            Log.d("ONTOUCH", "BombsFound is $bombsFound")
             invalidate()
         }
         return super.onTouchEvent(event)
@@ -136,6 +140,7 @@ class MinesweeperView(context: Context?, attrs: AttributeSet?) : View(context, a
 
     fun resetGame() {
         MinesweeperModel.resetModel()
+        bombsFound = 0
         invalidate()
     }
 

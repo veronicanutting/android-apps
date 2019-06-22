@@ -1,12 +1,10 @@
 package us.harvard.minesweeper.model
 
 import android.util.Log
-import java.util.*
 import kotlin.random.Random
 
 object MinesweeperModel {
 
-    // GET FROM INPUT
     val gridSize : Int = 5
     val totalBombs : Int = 3
 
@@ -42,11 +40,11 @@ object MinesweeperModel {
     }
 
     private fun placeBombs() {
-        Log.d("BOMB PLACEMENT", "")
         var x : Int = 0
         var y : Int = 0
         var bombsPlaced : Int = 0
 
+        Log.d("BOMB", "Placing bombs!!!")
         while (bombsPlaced < totalBombs) {
             x = Random.nextInt(1, gridSize+1)
             y = Random.nextInt(1, gridSize+1)
@@ -55,7 +53,8 @@ object MinesweeperModel {
                 fieldMatrix[x][y].isBomb = true
                 bombsPlaced++
                 updateMinesAround(x,y)
-                Log.d("BOMB PLACEMENT", "Bomb #$bombsPlaced is at fieldMatrix[$x][$y].")
+
+                Log.d("BOMB", "Bomb placed at fieldMatrix[$x][$y]")
             }
         }
     }
