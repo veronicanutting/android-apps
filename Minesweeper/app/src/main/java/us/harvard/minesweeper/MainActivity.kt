@@ -8,17 +8,17 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
 
+        val levelPicked : String
         if (intent.hasExtra("Level")){
-            val levelPicked = intent.getStringExtra("Level")
+            levelPicked = intent.getStringExtra("Level")
 
-            Log.d("LEVEL", "The level was $levelPicked")
+            Log.d("GAMELEVEL", "The level was $levelPicked")
         }
 
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
 
         btnRestart.setOnClickListener {

@@ -12,6 +12,7 @@ import us.harvard.minesweeper.HomeActivity
 import us.harvard.minesweeper.MainActivity
 import us.harvard.minesweeper.model.MinesweeperModel
 import us.harvard.minesweeper.model.MinesweeperModel.fieldMatrix
+import us.harvard.minesweeper.model.MinesweeperModel.resetModel
 
 class MinesweeperView(context: Context?, attrs: AttributeSet?) : View(context, attrs)
 {
@@ -39,6 +40,7 @@ class MinesweeperView(context: Context?, attrs: AttributeSet?) : View(context, a
     val totalBombs : Int = 3
 
     override fun onDraw(canvas: Canvas?) {
+
         super.onDraw(canvas)
 
         canvas?.drawRect(0f,0f,
@@ -139,7 +141,7 @@ class MinesweeperView(context: Context?, attrs: AttributeSet?) : View(context, a
     }
 
     fun resetGame() {
-        MinesweeperModel.resetModel()
+        resetModel()
         bombsFound = 0
         invalidate()
     }
