@@ -16,15 +16,10 @@ class ShopItemDialog : DialogFragment() {
         val dialogView = requireActivity().layoutInflater.inflate(
             R.layout.shop_item_dialog, null
         )
+
         dialogBuilder.setView(dialogView)
-
-        dialogBuilder.setPositiveButton("Add") {
-                dialog, which ->
-        }
-
-        dialogBuilder.setNegativeButton("Cancel") {
-                dialog, which ->
-        }
+        dialogBuilder.setPositiveButton("Add") { dialog, which ->}
+        dialogBuilder.setNegativeButton("Cancel") { dialog, which ->}
 
         return dialogBuilder.create()
     }

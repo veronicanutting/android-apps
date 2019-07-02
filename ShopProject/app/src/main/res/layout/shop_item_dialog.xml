@@ -6,10 +6,11 @@
 
     <EditText
             android:hint="@string/enter_shop_item_name_here"
-            android:id="@+id/etShopItemText"
+            android:id="@+id/etShopItemName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
+    <!-- when in edit mode, text next to check is "purchased?" -->
     <CheckBox
             android:text="@string/purchased"
             android:id="@+id/cbShopItemPurchased"

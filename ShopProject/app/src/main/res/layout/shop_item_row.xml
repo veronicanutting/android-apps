@@ -15,23 +15,24 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+        <!-- when in list mode, text next to check is just item name -->
         <CheckBox
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/cbDone"
-                android:text="@string/purchased"/>
+                android:id="@+id/cbShopItemPurchased"/>
 
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/btnEdit"
+                android:id="@+id/btnEditShopItem"
                 android:text="@string/edit"/>
 
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/btnDelete"
+                android:id="@+id/btnDeleteShopItem"
                 android:text="@string/delete"/>
+
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
