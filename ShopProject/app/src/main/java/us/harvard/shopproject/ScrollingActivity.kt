@@ -5,13 +5,19 @@ import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.recyclerview.widget.ItemTouchHelper
 import kotlinx.android.synthetic.main.activity_scrolling.*
 import us.harvard.shopproject.adapter.ShopItemAdapter
+import us.harvard.shopproject.data.AppDatabase
 import us.harvard.shopproject.data.ShopItem
 
-class ScrollingActivity : AppCompatActivity() {
+class ScrollingActivity : AppCompatActivity(),
+    ShopItemDialog.ShopItemHandler {
 
     lateinit var shopItemAdapter: ShopItemAdapter
+    companion object {
+        public val KEY_SHOP_ITEM_EDIT = "KEY_SHOP_ITEM_EDIT"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,10 +29,14 @@ class ScrollingActivity : AppCompatActivity() {
             ShopItemDialog().show(supportFragmentManager, "Dialog")
         }
 
-        fabDeleteAll.setOnClickListener { view ->
-            Snackbar.make(view, "Will delete all items",
-                Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+        fabDeleteAll.setOnClickListener {
+            Thread {
+                AppDatabase.getInstance(this@ScrollingActivity).shopItemDao()
+                    .deleteAllShopItems()
+                runOnUiThread {
+                    shopItemAdapter.removeAll()
+                }
+            }.start()
         }
 
         initRecyclerView()
@@ -34,23 +44,53 @@ class ScrollingActivity : AppCompatActivity() {
     }
 
     private fun initRecyclerView() {
+        Thread {
+            var shopItems = AppDatabase.getInstance(this@ScrollingActivity).
+                shopItemDao().getAllShopItems()
 
-        var shopItems = listOf<ShopItem>(
-            ShopItem(true, "1 banana"),
-            ShopItem(false, "fish heads"),
-            ShopItem(false, "chicken feet"),
-            ShopItem(false, "frogs' legs"),
-            ShopItem(true, "ANCHOVIES"),
-            ShopItem(false, "pack of strawberries"),
-            ShopItem(true, "Pellegrino"),
-            ShopItem(true, "meringues"),
-            ShopItem(false, "pack of raspberries"),
-            ShopItem(false, "pack of blackberries"),
-            ShopItem(true, "4 apples"))
+            runOnUiThread {
+                shopItemAdapter = ShopItemAdapter(this, shopItems)
+                recycler_view.adapter = shopItemAdapter
+            }
+        }.start()
+    }
 
-        shopItemAdapter = ShopItemAdapter(this, shopItems)
-        recycler_view.adapter = shopItemAdapter
+    var editIndex : Int = -1
 
+    public fun showEditShopItemDialog(shopItemToEdit: ShopItem, shopItemIndex : Int) {
+        editIndex = shopItemIndex
+
+        val editShopItemDialog = ShopItemDialog()
+
+        val bundle = Bundle()
+        bundle.putSerializable(KEY_SHOP_ITEM_EDIT, shopItemToEdit)
+        editShopItemDialog.arguments = bundle
+
+        editShopItemDialog.show(supportFragmentManager, "EDITDIALOG")
+    }
+
+    override fun shopItemCreated(shopItem: ShopItem) {
+        Thread{
+
+            var newId : Long = AppDatabase.getInstance(this@ScrollingActivity)
+                .shopItemDao().insertShopItem(shopItem)
+            shopItem.id = newId
+
+            runOnUiThread {
+                shopItemAdapter.addShopItem(shopItem)
+            }
+        }.start()
+    }
+
+    override fun shopItemUpdated(shopItem: ShopItem) {
+        Thread {
+            AppDatabase.getInstance(this@ScrollingActivity)
+                .shopItemDao().updateShopItem(shopItem)
+
+            runOnUiThread{
+                shopItemAdapter.updateShopItem(shopItem, editIndex)
+            }
+        }.start()
     }
 
 }
