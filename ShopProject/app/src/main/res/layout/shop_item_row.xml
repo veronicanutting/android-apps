@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/card_view"
+        xmlns:tools="http://schemas.android.com/tools" android:id="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
@@ -10,29 +10,98 @@
         card_view:cardCornerRadius="4dp"
         card_view:cardElevation="4dp">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="141dp">
 
         <!-- when in list mode, text next to check is just item name -->
-        <CheckBox
-                android:layout_width="match_parent"
+        <TextView
+                android:id="@+id/tvShopItemName"
+                android:text="Name"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/cbShopItemPurchased"/>
+                android:textSize="30sp" android:layout_marginTop="8dp"
+                card_view:layout_constraintTop_toTopOf="parent" android:layout_marginStart="8dp"
+                card_view:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+                android:layout_marginBottom="8dp"
+                card_view:layout_constraintBottom_toTopOf="@+id/tvShopItemDescription"/>
+
+        <ImageView
+                android:id="@+id/ivShopItemCategory"
+                android:src="@mipmap/ic_launcher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/fab_margin"
+                android:cropToPadding="true"
+                android:adjustViewBounds="false" android:layout_margin="@dimen/fab_margin"
+                android:layout_marginTop="1dp" card_view:layout_constraintTop_toTopOf="parent"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintBottom_toTopOf="@+id/btnDeleteShopItem"/>
+
+        <TextView
+                android:id="@+id/tvShopItemDescription"
+                android:text="Description..."
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                card_view:layout_constraintBottom_toTopOf="@+id/btnEditShopItem"
+                card_view:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"/>
+
+        <TextView
+                android:id="@+id/tvShopItemEstimatedPrice"
+                android:text="$0.00"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                card_view:layout_constraintStart_toStartOf="@+id/guideline3" android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                card_view:layout_constraintBottom_toBottomOf="@+id/tvShopItemDescription"
+                card_view:layout_constraintTop_toTopOf="@+id/tvShopItemDescription"/>
+
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/cbShopItemPurchased"
+                android:textSize="30sp" card_view:layout_constraintEnd_toStartOf="@+id/guideline2"
+                android:layout_marginEnd="8dp" android:layout_marginRight="8dp" android:layout_marginTop="8dp"
+                card_view:layout_constraintTop_toTopOf="parent"/>
 
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/btnEditShopItem"
-                android:text="@string/edit"/>
+                android:text="@string/edit"
+                android:fontFamily="casual" android:clickable="false"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                card_view:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="4dp"
+                card_view:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="4dp"
+                android:layout_marginStart="4dp"/>
 
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/btnDeleteShopItem"
-                android:text="@string/delete"/>
+                android:text="@string/delete"
+                card_view:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="4dp"
+                android:layout_marginRight="4dp" card_view:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="4dp"/>
+        <androidx.constraintlayout.widget.Guideline android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content" android:id="@+id/guideline1"
+                                                    android:orientation="horizontal"
+                                                    card_view:layout_constraintGuide_percent="0.5"/>
+        <androidx.constraintlayout.widget.Guideline android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content" android:id="@+id/guideline2"
+                                                    android:orientation="vertical"
+                                                    card_view:layout_constraintGuide_percent="0.75"/>
+        <androidx.constraintlayout.widget.Guideline android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content" android:id="@+id/guideline3"
+                                                    android:orientation="vertical"
+                                                    card_view:layout_constraintGuide_percent="0.25"/>
+        <androidx.constraintlayout.widget.Guideline android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content" android:id="@+id/guideline4"
+                                                    android:orientation="vertical"
+                                                    card_view:layout_constraintGuide_percent="0.5"/>
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

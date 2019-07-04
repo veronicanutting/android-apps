@@ -23,6 +23,10 @@ class ShopItemAdapter : RecyclerView.Adapter<ShopItemAdapter.ViewHolder>{
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val cbShopItemPurchased = itemView.cbShopItemPurchased
+        val tvShopItemName = itemView.tvShopItemName
+        val tvShopItemDescription = itemView.tvShopItemDescription
+        val tvShopItemEstimatedPrice = itemView.tvShopItemEstimatedPrice
+        val ivShopItemCategory = itemView.ivShopItemCategory
         val btnEditShopItem = itemView.btnEditShopItem
         val btnDeleteShopItem = itemView.btnDeleteShopItem
     }
@@ -37,11 +41,24 @@ class ShopItemAdapter : RecyclerView.Adapter<ShopItemAdapter.ViewHolder>{
         return shopItems.size
     }
 
+    var category : String = "food"
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var shopItem = shopItems.get(holder.adapterPosition)
 
-        holder.cbShopItemPurchased.text = shopItem.shopItemName
         holder.cbShopItemPurchased.isChecked = shopItem.shopItemPurchased
+        holder.tvShopItemName.text = shopItem.shopItemName
+        holder.tvShopItemDescription.text = shopItem.shopItemDescription
+        holder.tvShopItemEstimatedPrice.text = shopItem.shopItemEstimatedPrice
+        category = shopItem.shopItemCategory
+
+        if (category == "food") {
+            holder.ivShopItemCategory.setImageResource(R.drawable.abc_ic_star_black_36dp)
+        } else if (category == "alcohol") {
+            holder.ivShopItemCategory.setImageResource(R.drawable.ic_mtrl_chip_close_circle)
+        } else {
+            holder.ivShopItemCategory.setImageResource(R.drawable.ic_mtrl_chip_checked_circle)
+        }
 
         holder.btnDeleteShopItem.setOnClickListener{
             removeShopItem(holder.adapterPosition)

@@ -6,4 +6,11 @@
     <string name="purchased">Purchased?</string>
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
+
+    <string-array name="categories_array">
+        <item>food</item>
+        <item>alcohol</item>
+        <item>other</item>
+    </string-array>
+
 </resources>

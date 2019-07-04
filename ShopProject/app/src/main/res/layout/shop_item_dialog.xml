@@ -10,6 +10,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
+    <EditText
+            android:hint="Enter description here"
+            android:id="@+id/etShopItemDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    <EditText
+            android:hint="Enter estimated price"
+            android:id="@+id/etShopItemEstimatedPrice"
+            android:inputType="numberDecimal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    <Spinner
+            android:id="@+id/spinnerCategories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
     <!-- when in edit mode, text next to checkbox is "purchased?" -->
     <CheckBox
             android:text="@string/purchased"

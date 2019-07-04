@@ -4,10 +4,7 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
-import android.widget.Button
-import android.widget.CheckBox
-import android.widget.EditText
-import android.widget.Spinner
+import android.widget.*
 import androidx.fragment.app.DialogFragment
 import kotlinx.android.synthetic.main.shop_item_dialog.view.*
 import us.harvard.shopproject.data.ShopItem
@@ -33,8 +30,11 @@ class ShopItemDialog : DialogFragment() {
         }
     }
 
-    lateinit var etShopItemName: EditText
     lateinit var cbShopItemPurchased: CheckBox
+    lateinit var etShopItemName: EditText
+    lateinit var etShopItemDescription: EditText
+    lateinit var etShopItemEstimatedPrice: EditText
+    lateinit var spinnerCategories: Spinner
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialogBuilder = AlertDialog.Builder(requireContext())
@@ -44,8 +44,17 @@ class ShopItemDialog : DialogFragment() {
             R.layout.shop_item_dialog, null
         )
 
-        etShopItemName = dialogView.etShopItemName
         cbShopItemPurchased = dialogView.cbShopItemPurchased
+        etShopItemName = dialogView.etShopItemName
+        etShopItemDescription = dialogView.etShopItemDescription
+        etShopItemEstimatedPrice = dialogView.etShopItemEstimatedPrice
+        spinnerCategories = dialogView.spinnerCategories
+
+        val categoriesAdapter = ArrayAdapter.createFromResource(
+            activity as Context,
+            R.array.categories_array,
+            android.R.layout.simple_spinner_item)
+        spinnerCategories.adapter = categoriesAdapter
 
         dialogBuilder.setView(dialogView)
 
@@ -53,15 +62,17 @@ class ShopItemDialog : DialogFragment() {
             if (arguments!!.containsKey(ScrollingActivity.KEY_SHOP_ITEM_EDIT)) {
                 val shopItem = arguments!!.getSerializable(ScrollingActivity.KEY_SHOP_ITEM_EDIT) as ShopItem
 
-                etShopItemName.setText(shopItem.shopItemName)
                 cbShopItemPurchased.isChecked = shopItem.shopItemPurchased
-                //spinnerCategory.selectedItem =
+                etShopItemName.setText(shopItem.shopItemName)
+                etShopItemDescription.setText(shopItem.shopItemDescription)
+                etShopItemEstimatedPrice.setText(shopItem.shopItemEstimatedPrice)
+                //spinnerCategories.selectedItem = shopItem.shopItemCategory
 
                 dialogBuilder.setTitle("Edit shop item")
             }
         }
 
-        dialogBuilder.setPositiveButton("Add") { dialog, which ->}
+        dialogBuilder.setPositiveButton("Ok") { dialog, which ->}
         dialogBuilder.setNegativeButton("Cancel") { dialog, which ->}
 
         return dialogBuilder.create()
@@ -82,6 +93,9 @@ class ShopItemDialog : DialogFragment() {
 
                     shopItemToEdit.shopItemPurchased = cbShopItemPurchased.isChecked
                     shopItemToEdit.shopItemName = etShopItemName.text.toString()
+                    shopItemToEdit.shopItemDescription = etShopItemDescription.text.toString()
+                    shopItemToEdit.shopItemEstimatedPrice = etShopItemEstimatedPrice.text.toString()
+                    shopItemToEdit.shopItemCategory = spinnerCategories.selectedItem.toString()
 
                     shopItemHandler.shopItemUpdated(shopItemToEdit)
 
@@ -90,7 +104,10 @@ class ShopItemDialog : DialogFragment() {
                         ShopItem(
                             null,
                             cbShopItemPurchased.isChecked,
-                            etShopItemName.text.toString())
+                            etShopItemName.text.toString(),
+                            etShopItemDescription.text.toString(),
+                            etShopItemEstimatedPrice.text.toString(),
+                            spinnerCategories.selectedItem.toString())
                     )
                 }
 
@@ -98,6 +115,8 @@ class ShopItemDialog : DialogFragment() {
 
             } else {
                 etShopItemName.error="This field cannot be empty!"
+                etShopItemDescription.error="This field cannot be empty!"
+                etShopItemEstimatedPrice.error="This field cannot be empty!"
             }
         }
     }
