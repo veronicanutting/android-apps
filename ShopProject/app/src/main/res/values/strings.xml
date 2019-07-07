@@ -6,10 +6,21 @@
     <string name="purchased">Purchased?</string>
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
+    <string name="enter_item_description_or_notes_here">Enter item description or notes here</string>
+    <string name="enter_estimated_price">Enter estimated price</string>
+    <string name="already_purchased">Already purchased?</string>
 
     <string-array name="categories_array">
-        <item>food</item>
+        <item>fruits</item>
+        <item>vegetables</item>
+        <item>meat and eggs</item>
+        <item>dairy</item>
+        <item>fish</item>
+        <item>grains</item>
+        <item>beverages</item>
         <item>alcohol</item>
+        <item>sweets</item>
+        <item>cleaning supplies</item>
         <item>other</item>
     </string-array>
 

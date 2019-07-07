@@ -66,7 +66,10 @@ class ShopItemDialog : DialogFragment() {
                 etShopItemName.setText(shopItem.shopItemName)
                 etShopItemDescription.setText(shopItem.shopItemDescription)
                 etShopItemEstimatedPrice.setText(shopItem.shopItemEstimatedPrice)
-                //spinnerCategories.selectedItem = shopItem.shopItemCategory
+
+                val categoryPicked = shopItem.shopItemCategory
+                val categoryPickedIndex = categoriesAdapter.getPosition(categoryPicked)
+                spinnerCategories.setSelection(categoryPickedIndex)
 
                 dialogBuilder.setTitle("Edit shop item")
             }

@@ -26,6 +26,7 @@ class SplashActivity : AppCompatActivity() {
                         ScrollingActivity::class.java)
 
                     startActivity(intentScrolling)
+                    //finish()
 
                 }
 
@@ -35,7 +36,11 @@ class SplashActivity : AppCompatActivity() {
         )
 
         setContentView(R.layout.activity_splash)
-        btnSplash.startAnimation(anim)
+
+        btnSplash.setOnClickListener{
+            btnSplash.startAnimation(anim)
+
+        }
 
     }
 }

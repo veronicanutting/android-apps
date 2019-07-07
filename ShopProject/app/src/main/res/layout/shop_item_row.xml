@@ -12,79 +12,103 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="141dp">
+            android:layout_height="wrap_content">
 
-        <!-- when in list mode, text next to check is just item name -->
         <TextView
                 android:id="@+id/tvShopItemName"
+                style="@style/ShoppingText"
                 android:text="Name"
+                android:ellipsize="end"
+                android:maxLength="10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="30sp" android:layout_marginTop="8dp"
-                card_view:layout_constraintTop_toTopOf="parent" android:layout_marginStart="8dp"
-                card_view:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
-                android:layout_marginBottom="8dp"
-                card_view:layout_constraintBottom_toTopOf="@+id/tvShopItemDescription"/>
+
+                android:textSize="30sp"
+                card_view:layout_constraintStart_toEndOf="@+id/ivShopItemCategory" android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp" android:textStyle="bold"
+                card_view:layout_constraintTop_toTopOf="@+id/ivShopItemCategory"
+                card_view:layout_constraintBottom_toBottomOf="@+id/ivShopItemCategory"/>
 
         <ImageView
                 android:id="@+id/ivShopItemCategory"
                 android:src="@mipmap/ic_launcher"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/fab_margin"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:padding="2dp"
                 android:cropToPadding="true"
                 android:adjustViewBounds="false" android:layout_margin="@dimen/fab_margin"
-                android:layout_marginTop="1dp" card_view:layout_constraintTop_toTopOf="parent"
-                card_view:layout_constraintEnd_toEndOf="parent"
-                card_view:layout_constraintBottom_toTopOf="@+id/btnDeleteShopItem"/>
+                card_view:layout_constraintBottom_toTopOf="@+id/guideline1" android:layout_marginBottom="5dp"
+                card_view:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp" card_view:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="5dp"/>
 
         <TextView
                 android:id="@+id/tvShopItemDescription"
+                style="@style/ShoppingText"
                 android:text="Description..."
+                android:ellipsize="end"
+                android:maxLength="25"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                card_view:layout_constraintBottom_toTopOf="@+id/btnEditShopItem"
-                card_view:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"/>
+                android:layout_marginTop="8dp"
+                card_view:layout_constraintTop_toBottomOf="@+id/ivShopItemCategory" android:layout_marginBottom="8dp"
+                card_view:layout_constraintBottom_toTopOf="@+id/guideline" android:layout_marginStart="16dp"
+                card_view:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="16dp"
+                card_view:layout_constraintVertical_bias="1.0" android:textSize="15sp" android:textStyle="italic"/>
 
         <TextView
                 android:id="@+id/tvShopItemEstimatedPrice"
-                android:text="$0.00"
+                style="@style/ShoppingText"
+                android:text="0.00"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                card_view:layout_constraintStart_toStartOf="@+id/guideline3" android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
+                android:textStyle="bold"
                 card_view:layout_constraintBottom_toBottomOf="@+id/tvShopItemDescription"
-                card_view:layout_constraintTop_toTopOf="@+id/tvShopItemDescription"/>
+                card_view:layout_constraintTop_toTopOf="@+id/tvShopItemDescription"
+                card_view:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="40dp"
+                android:layout_marginRight="40dp" card_view:layout_constraintVertical_bias="0.0"/>
+
+        <TextView
+                style="@style/ShoppingText"
+                android:text="$"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                card_view:layout_constraintEnd_toStartOf="@+id/tvShopItemEstimatedPrice"
+                card_view:layout_constraintBottom_toBottomOf="@+id/tvShopItemEstimatedPrice"/>
 
         <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:id="@+id/cbShopItemPurchased"
-                android:textSize="30sp" card_view:layout_constraintEnd_toStartOf="@+id/guideline2"
-                android:layout_marginEnd="8dp" android:layout_marginRight="8dp" android:layout_marginTop="8dp"
-                card_view:layout_constraintTop_toTopOf="parent"/>
+                android:visibility="visible"
+                android:textSize="30sp"
+                android:padding="2dp"
+                card_view:layout_constraintTop_toTopOf="@+id/tvShopItemName"
+                card_view:layout_constraintBottom_toBottomOf="@+id/tvShopItemName"
+                card_view:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"/>
 
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/btnEditShopItem"
                 android:text="@string/edit"
-                android:fontFamily="casual" android:clickable="false"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                card_view:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="4dp"
-                card_view:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="4dp"
-                android:layout_marginStart="4dp"/>
+                android:layout_marginBottom="5dp" card_view:layout_constraintBottom_toBottomOf="parent"
+                card_view:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp" android:layout_marginTop="5dp"
+                card_view:layout_constraintTop_toBottomOf="@+id/tvShopItemDescription"/>
+
 
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/btnDeleteShopItem"
                 android:text="@string/delete"
-                card_view:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="4dp"
-                android:layout_marginRight="4dp" card_view:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginBottom="4dp"/>
+                card_view:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                card_view:layout_constraintTop_toTopOf="@+id/btnEditShopItem"
+                card_view:layout_constraintBottom_toBottomOf="@+id/btnEditShopItem"/>
         <androidx.constraintlayout.widget.Guideline android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content" android:id="@+id/guideline1"
                                                     android:orientation="horizontal"
@@ -96,11 +120,20 @@
         <androidx.constraintlayout.widget.Guideline android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content" android:id="@+id/guideline3"
                                                     android:orientation="vertical"
-                                                    card_view:layout_constraintGuide_percent="0.25"/>
+                                                    card_view:layout_constraintGuide_percent="0.25"
+                                                    card_view:layout_constraintStart_toStartOf="parent"
+                                                    android:layout_marginLeft="5dp"
+                                                    android:layout_marginStart="5dp"
+                                                    card_view:layout_constraintBottom_toBottomOf="parent"
+                                                    android:layout_marginBottom="5dp"/>
         <androidx.constraintlayout.widget.Guideline android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content" android:id="@+id/guideline4"
                                                     android:orientation="vertical"
                                                     card_view:layout_constraintGuide_percent="0.5"/>
+        <androidx.constraintlayout.widget.Guideline android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content" android:id="@+id/guideline"
+                                                    android:orientation="horizontal"
+                                                    card_view:layout_constraintGuide_percent="0.65"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

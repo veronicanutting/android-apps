@@ -7,17 +7,19 @@
     <EditText
             android:hint="@string/enter_shop_item_name_here"
             android:id="@+id/etShopItemName"
+            android:maxLength="10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
     <EditText
-            android:hint="Enter description here"
+            android:hint="@string/enter_item_description_or_notes_here"
             android:id="@+id/etShopItemDescription"
+            android:maxLength="25"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
     <EditText
-            android:hint="Enter estimated price"
+            android:hint="@string/enter_estimated_price"
             android:id="@+id/etShopItemEstimatedPrice"
             android:inputType="numberDecimal"
             android:layout_width="match_parent"
@@ -28,7 +30,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-    <!-- when in edit mode, text next to checkbox is "purchased?" -->
     <CheckBox
             android:text="@string/purchased"
             android:id="@+id/cbShopItemPurchased"

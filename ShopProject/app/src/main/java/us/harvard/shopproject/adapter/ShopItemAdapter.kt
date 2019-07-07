@@ -1,6 +1,7 @@
 package us.harvard.shopproject.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,18 +47,29 @@ class ShopItemAdapter : RecyclerView.Adapter<ShopItemAdapter.ViewHolder>{
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var shopItem = shopItems.get(holder.adapterPosition)
 
+        Log.d("CHECK", "Here is shopItemPurchased: ${shopItem.shopItemPurchased}")
+        Log.d("CHECK", "Here is cbShopItemPurchased: ${holder.cbShopItemPurchased.isChecked}")
+
         holder.cbShopItemPurchased.isChecked = shopItem.shopItemPurchased
         holder.tvShopItemName.text = shopItem.shopItemName
         holder.tvShopItemDescription.text = shopItem.shopItemDescription
         holder.tvShopItemEstimatedPrice.text = shopItem.shopItemEstimatedPrice
         category = shopItem.shopItemCategory
 
-        if (category == "food") {
-            holder.ivShopItemCategory.setImageResource(R.drawable.abc_ic_star_black_36dp)
-        } else if (category == "alcohol") {
-            holder.ivShopItemCategory.setImageResource(R.drawable.ic_mtrl_chip_close_circle)
-        } else {
-            holder.ivShopItemCategory.setImageResource(R.drawable.ic_mtrl_chip_checked_circle)
+        Log.d("CHECKEDDDDD", "Here is cbShopItemPurchased: ${holder.cbShopItemPurchased.isChecked}")
+
+        when (category) {
+            "fruits" -> holder.ivShopItemCategory.setImageResource(R.drawable.fruit)
+            "vegetables" -> holder.ivShopItemCategory.setImageResource(R.drawable.veggie)
+            "meat and eggs" -> holder.ivShopItemCategory.setImageResource(R.drawable.meat)
+            "dairy" -> holder.ivShopItemCategory.setImageResource(R.drawable.cheese)
+            "fish" -> holder.ivShopItemCategory.setImageResource(R.drawable.fish)
+            "grains" -> holder.ivShopItemCategory.setImageResource(R.drawable.grain)
+            "beverages" -> holder.ivShopItemCategory.setImageResource(R.drawable.beverages)
+            "alcohol" -> holder.ivShopItemCategory.setImageResource(R.drawable.alcohol)
+            "sweets" -> holder.ivShopItemCategory.setImageResource(R.drawable.sweets)
+            "cleaning supplies" -> holder.ivShopItemCategory.setImageResource(R.drawable.cleaning)
+            else -> holder.ivShopItemCategory.setImageResource(R.drawable.other)
         }
 
         holder.btnDeleteShopItem.setOnClickListener{
