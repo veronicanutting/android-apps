@@ -9,6 +9,11 @@
     <string name="enter_item_description_or_notes_here">Enter item description or notes here</string>
     <string name="enter_estimated_price">Enter estimated price</string>
     <string name="already_purchased">Already purchased?</string>
+    <string name="name">Name</string>
+    <string name="description">Description...</string>
+    <string name="_0_00">0.00</string>
+    <string name="currency_symbol">$</string>
+    <string name="let_s_get_shopping">Let\'s Get Shopping!</string>
 
     <string-array name="categories_array">
         <item>fruits</item>

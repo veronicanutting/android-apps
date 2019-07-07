@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools" android:id="@+id/card_view"
+        android:id="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
@@ -17,7 +17,7 @@
         <TextView
                 android:id="@+id/tvShopItemName"
                 style="@style/ShoppingText"
-                android:text="Name"
+                android:text="@string/name"
                 android:ellipsize="end"
                 android:maxLength="10"
                 android:layout_width="wrap_content"
@@ -45,7 +45,7 @@
         <TextView
                 android:id="@+id/tvShopItemDescription"
                 style="@style/ShoppingText"
-                android:text="Description..."
+                android:text="@string/description"
                 android:ellipsize="end"
                 android:maxLength="23"
                 android:layout_width="wrap_content"
@@ -59,7 +59,7 @@
         <TextView
                 android:id="@+id/tvShopItemEstimatedPrice"
                 style="@style/ShoppingText"
-                android:text="0.00"
+                android:text="@string/_0_00"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
@@ -70,7 +70,7 @@
 
         <TextView
                 style="@style/ShoppingText"
-                android:text="$"
+                android:text="@string/currency_symbol"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
