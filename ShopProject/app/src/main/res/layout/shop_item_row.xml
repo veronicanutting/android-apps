@@ -47,7 +47,7 @@
                 style="@style/ShoppingText"
                 android:text="Description..."
                 android:ellipsize="end"
-                android:maxLength="25"
+                android:maxLength="23"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -78,16 +78,13 @@
                 card_view:layout_constraintBottom_toBottomOf="@+id/tvShopItemEstimatedPrice"/>
 
         <CheckBox
-                android:layout_width="35dp"
-                android:layout_height="35dp"
                 android:id="@+id/cbShopItemPurchased"
-                android:visibility="visible"
-                android:textSize="30sp"
-                android:padding="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 card_view:layout_constraintTop_toTopOf="@+id/tvShopItemName"
                 card_view:layout_constraintBottom_toBottomOf="@+id/tvShopItemName"
-                card_view:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="5dp"
-                android:layout_marginRight="5dp"/>
+                card_view:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"/>
 
         <Button
                 android:layout_width="wrap_content"
@@ -97,7 +94,7 @@
                 android:layout_marginBottom="5dp" card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp" android:layout_marginTop="5dp"
-                card_view:layout_constraintTop_toBottomOf="@+id/tvShopItemDescription"/>
+                card_view:layout_constraintTop_toBottomOf="@+id/tvShopItemDescription" android:fontFamily="casual"/>
 
 
         <Button
@@ -108,7 +105,7 @@
                 card_view:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
                 card_view:layout_constraintTop_toTopOf="@+id/btnEditShopItem"
-                card_view:layout_constraintBottom_toBottomOf="@+id/btnEditShopItem"/>
+                card_view:layout_constraintBottom_toBottomOf="@+id/btnEditShopItem" android:fontFamily="casual"/>
         <androidx.constraintlayout.widget.Guideline android:layout_width="wrap_content"
                                                     android:layout_height="wrap_content" android:id="@+id/guideline1"
                                                     android:orientation="horizontal"
