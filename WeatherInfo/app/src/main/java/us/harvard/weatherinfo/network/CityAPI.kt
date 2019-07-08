@@ -7,6 +7,7 @@ import us.harvard.weatherinfo.data.Base
 
 interface CityAPI {
 
-    @GET("/weather")
-    fun getWeather(@Query("base") base: String): Call<Base>
-}
+    @GET("data/2.5/weather")
+    fun getWeather(@Query("q") city: String,
+                   @Query("units") units: String,
+                   @Query("appid") appid: String): Call<Base>}
