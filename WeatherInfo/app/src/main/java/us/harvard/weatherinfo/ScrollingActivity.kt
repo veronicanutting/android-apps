@@ -30,7 +30,7 @@ class ScrollingActivity : AppCompatActivity() {
     }
 
     fun initRecyclerView() {
-        var cities = listOf<String>("London", "New York", "Budapest")
+        var cities = listOf<String>("London", "New York", "Budapest", "Klddd")
         cityAdapter = CityAdapter(this, cities)
 
         val layoutManager = LinearLayoutManager(this)

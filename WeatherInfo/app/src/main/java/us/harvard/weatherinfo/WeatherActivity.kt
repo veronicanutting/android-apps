@@ -2,6 +2,7 @@ package us.harvard.weatherinfo
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_weather.*
 import kotlinx.android.synthetic.main.city_row.*
 import kotlinx.android.synthetic.main.city_row.tvCityName
@@ -38,13 +39,26 @@ class WeatherActivity : AppCompatActivity() {
             object: Callback<Base> {
                 override fun onFailure(call: Call<Base>, t: Throwable) {
 
+                    tvCityName.text = "Error!!"
+
                 }
                 override fun onResponse(call: Call<Base>, response: Response<Base>) {
                     val weatherBase : Base? = response.body()
-                    tvLatitude.text = "Lat is ${weatherBase?.coord?.lat}"
-                    tvLongitude.text = "Long is ${weatherBase?.coord?.lon}"
+                    tvLatitude.text = "(${weatherBase?.coord?.lat}°,"
+                    tvLongitude.text = " ${weatherBase?.coord?.lon}°)"
+                    tvPressure.text = "Atmospheric pressure: ${weatherBase?.main?.pressure}hPa"
+                    tvTemperature.text = "Temperature: ${weatherBase?.main?.temp}°C"
+                    tvDescription.text = "${weatherBase?.weather?.get(0)?.description}"
+                    tvWind.text = "Wind speed: ${weatherBase?.wind?.speed}m/s"
+                    tvHumidity.text = "Humidity: ${weatherBase?.main?.humidity}%"
 
-                    // http://openweathermap.org/img/wn/10d@2x.png --> "10d" is icon string
+                    Glide.with(this@WeatherActivity).load(
+                        ("https://openweathermap.org/img/w/" + response.body()?.weather?.get(0)?.icon + ".png"))
+                        .into(ivWeatherIconLeft)
+
+                    Glide.with(this@WeatherActivity).load(
+                        ("https://openweathermap.org/img/w/" + response.body()?.weather?.get(0)?.icon + ".png"))
+                        .into(ivWeatherIconRight)
                 }
             }
         )
