@@ -9,6 +9,8 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.city_row.view.*
 import us.harvard.weatherinfo.R
+import us.harvard.weatherinfo.ScrollingActivity
+import us.harvard.weatherinfo.WeatherActivity
 
 class CityAdapter : RecyclerView.Adapter<CityAdapter.ViewHolder>{
 
@@ -38,7 +40,9 @@ class CityAdapter : RecyclerView.Adapter<CityAdapter.ViewHolder>{
         holder.tvCityName.text = city
 
         holder.btnSeeWeatherDetails.setOnClickListener{
-            // take to details
+            var intent = Intent(context, WeatherActivity::class.java)
+            intent.putExtra("city name", city)
+            context.startActivity(intent)
         }
     }
 
