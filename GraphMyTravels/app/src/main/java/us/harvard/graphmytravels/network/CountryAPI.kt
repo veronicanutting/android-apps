@@ -10,6 +10,6 @@ interface CountryAPI {
 
     @GET("rest/v2/name/{country}")
     fun getCountryDetails(@Path("country") country: String,
-                          @Query("fullText") fullText: String): Call<Base>
+                          @Query("fullText") fullText: String): Call<List<Base>>
 
 }

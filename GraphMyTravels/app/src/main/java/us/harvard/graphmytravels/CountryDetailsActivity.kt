@@ -32,8 +32,8 @@ class CountryDetailsActivity : AppCompatActivity() {
         val call = countryDetailsAPI.getCountryDetails(tvCountryName.text.toString(), "true")
 
         call.enqueue(
-            object: Callback<Base> {
-                override fun onFailure(call: Call<Base>, t: Throwable) {
+            object: Callback<List<Base>> {
+                override fun onFailure(call: Call<List<Base>>, t: Throwable) {
 
                     if (t is IOException) {
                         Log.d("FAILURE", "CALLBACK FAILED DUE TO NETWORK")
@@ -42,10 +42,10 @@ class CountryDetailsActivity : AppCompatActivity() {
                         Log.d("FAILURE", "CALLBACK FAILED DUE TO CONVERSION PROBABLY")
                     }
                 }
-                override fun onResponse(call: Call<Base>, response: Response<Base>) {
+                override fun onResponse(call: Call<List<Base>>, response: Response<List<Base>>) {
                     Log.d("RESPONSE", "The response apparently is: ${response.body().toString()}")
 
-                    val countryBase : Base? = response.body()
+                    val countryBase : Base? = response.body()?.get(0)
                     val flagIcon = countryBase?.flag
 
                     insertCountryDetails(countryBase)
