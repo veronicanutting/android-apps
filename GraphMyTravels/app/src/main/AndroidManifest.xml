@@ -21,6 +21,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".CountryDetailsActivity"/>
+        <activity android:name=".ChartDetailsActivity"/>
+
     </application>
 
 </manifest>

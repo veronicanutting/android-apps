@@ -2,6 +2,7 @@ package us.harvard.graphmytravels
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -28,10 +29,10 @@ class ScrollingActivity : AppCompatActivity(), CountryDialog.CountryHandler, Cha
         initRecyclerView()
     }
 
-    var countries = mutableListOf<String>()
+    var countriesVisited = mutableListOf<String>()
 
     private fun initRecyclerView() {
-        countryAdapter = CountryAdapter(this, countries)
+        countryAdapter = CountryAdapter(this, countriesVisited)
 
         val layoutManager = LinearLayoutManager(this)
         layoutManager.reverseLayout = true
@@ -46,8 +47,9 @@ class ScrollingActivity : AppCompatActivity(), CountryDialog.CountryHandler, Cha
     }
 
     override fun chartCreated(chart: String) {
-        Toast.makeText(this, "Chart ${chart} created", Toast.LENGTH_LONG).show()
-
+        var intent = Intent(this@ScrollingActivity, ChartDetailsActivity::class.java)
+        intent.putExtra("chart name", chart)
+        startActivity(intent)
     }
 
 }

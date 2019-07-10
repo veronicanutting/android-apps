@@ -4,9 +4,13 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
+import android.widget.ArrayAdapter
 import android.widget.EditText
+import android.widget.Spinner
 import androidx.fragment.app.DialogFragment
 import kotlinx.android.synthetic.main.chart_dialog.view.*
+import kotlinx.android.synthetic.main.country_dialog.view.*
 
 class ChartDialog : DialogFragment() {
 
@@ -28,7 +32,7 @@ class ChartDialog : DialogFragment() {
         }
     }
 
-    lateinit var etChartText: EditText
+    lateinit var spinnerCharts: Spinner
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialogBuilder = AlertDialog.Builder(requireContext())
@@ -38,7 +42,13 @@ class ChartDialog : DialogFragment() {
             R.layout.chart_dialog, null
         )
 
-        etChartText = dialogView.etChartText
+        spinnerCharts = dialogView.spinnerCharts
+
+        val countriesAdapter = ArrayAdapter.createFromResource(
+            activity as Context,
+            R.array.chart_categories,
+            android.R.layout.simple_spinner_item)
+        spinnerCharts.adapter = countriesAdapter
 
         dialogBuilder.setView(dialogView)
         dialogBuilder.setPositiveButton("Ok") { dialog, which -> }
@@ -52,13 +62,8 @@ class ChartDialog : DialogFragment() {
 
         val positiveButton = (dialog as AlertDialog).getButton(Dialog.BUTTON_POSITIVE)
         positiveButton.setOnClickListener {
-            if (etChartText.text.isNotEmpty()) {
-                chartHandler.chartCreated(etChartText.text.toString())
-                dialog.dismiss()
-
-            } else {
-                etChartText.error = "This field can not be empty"
-            }
+            chartHandler.chartCreated(spinnerCharts.selectedItem.toString())
+            dialog.dismiss()
         }
     }
 

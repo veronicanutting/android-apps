@@ -1,4 +1,50 @@
 <resources>
     <string name="app_name">GraphMyTravels</string>
     <string name="action_settings">Settings</string>
+
+    <string-array name="chart_categories">
+        <item>EU</item>
+        <item>Mercosur</item>
+    </string-array>
+
+    <string name="EU">The European Union is a political and economic union of 28 member states that are located primarily in Europe. For the time being, the United Kingdom remains a full member of the EU.</string>
+    <string-array name="EU">
+        <item>Austria</item>
+        <item>Belgium</item>
+        <item>Bulgaria</item>
+        <item>Croatia</item>
+        <item>Cyprus</item>
+        <item>Czechia</item>
+        <item>Denmark</item>
+        <item>Estonia</item>
+        <item>Finland</item>
+        <item>France</item>
+        <item>Germany</item>
+        <item>Greece</item>
+        <item>Hungary</item>
+        <item>Italy</item>
+        <item>Latvia</item>
+        <item>Lithuania</item>
+        <item>Luxembourg</item>
+        <item>Malta</item>
+        <item>Netherlands</item>
+        <item>Poland</item>
+        <item>Portugal</item>
+        <item>Romania</item>
+        <item>Slovakia</item>
+        <item>Slovenia</item>
+        <item>Spain</item>
+        <item>Sweden</item>
+        <item>United Kingdom</item>
+    </string-array>
+
+    <string name="Mercosur">Mercosur is a South American trade bloc established by the Treaty of Asunción in 1991 and Protocol of Ouro Preto in 1994. Venezuela is a full member but has been suspended since December 1, 2016.</string>
+    <string-array name="Mercosur">
+        <item>Argentina</item>
+        <item>Brazil</item>
+        <item>Paraguay</item>
+        <item>Uruguay</item>
+    </string-array>
+
+    <string name="OtherChart">Just a place holder</string>
 </resources>

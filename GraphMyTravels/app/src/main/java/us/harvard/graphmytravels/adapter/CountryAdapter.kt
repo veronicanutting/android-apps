@@ -12,12 +12,12 @@ import us.harvard.graphmytravels.R
 
 class CountryAdapter : RecyclerView.Adapter<CountryAdapter.ViewHolder>{
 
-    var countries = mutableListOf<String>("United States", "Aruba", "Argentina", "Uruguay", "Chile", "Peru")
+    var countriesVisited = mutableListOf<String>("Aruba", "Argentina", "Uruguay", "Chile", "Peru")
 
     val context: Context
     constructor(context: Context, countryList: List<String>) : super() {
         this.context = context
-        countries.addAll(countryList)
+        countriesVisited.addAll(countryList)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryAdapter.ViewHolder {
@@ -28,11 +28,11 @@ class CountryAdapter : RecyclerView.Adapter<CountryAdapter.ViewHolder>{
     }
 
     override fun getItemCount(): Int {
-        return countries.size
+        return countriesVisited.size
     }
 
     override fun onBindViewHolder(holder: CountryAdapter.ViewHolder, position: Int) {
-        var country = countries.get(holder.adapterPosition)
+        var country = countriesVisited.get(holder.adapterPosition)
 
         holder.tvCountryName.text = country
 
@@ -48,12 +48,12 @@ class CountryAdapter : RecyclerView.Adapter<CountryAdapter.ViewHolder>{
     }
 
     fun addCountry(country: String){
-        countries.add(country)
+        countriesVisited.add(country)
         notifyDataSetChanged()
     }
 
     private fun removeCountry(index: Int) {
-        countries.removeAt(index)
+        countriesVisited.removeAt(index)
         notifyDataSetChanged()
     }
 
