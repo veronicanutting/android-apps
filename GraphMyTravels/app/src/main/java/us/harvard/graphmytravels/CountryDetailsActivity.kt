@@ -28,28 +28,22 @@ class CountryDetailsActivity : AppCompatActivity() {
             .build()
 
         val countryDetailsAPI = retrofit.create(CountryAPI::class.java)
-
         val call = countryDetailsAPI.getCountryDetails(tvCountryName.text.toString(), "true")
 
         call.enqueue(
             object: Callback<List<Base>> {
                 override fun onFailure(call: Call<List<Base>>, t: Throwable) {
-
                     if (t is IOException) {
-                        Log.d("FAILURE", "CALLBACK FAILED DUE TO NETWORK")
-
+                        Log.d("FAILURE", "Callback failed due to network problem")
                     } else {
-                        Log.d("FAILURE", "CALLBACK FAILED DUE TO CONVERSION PROBABLY")
+                        Log.d("FAILURE", "Callback failed due to conversion problem")
                     }
                 }
                 override fun onResponse(call: Call<List<Base>>, response: Response<List<Base>>) {
-                    Log.d("RESPONSE", "The response apparently is: ${response.body().toString()}")
-
                     val countryBase : Base? = response.body()?.get(0)
-                    val flagIcon = countryBase?.flag
 
                     insertCountryDetails(countryBase)
-                    insertFlagIcons(flagIcon)
+                    insertFlagIcons(countryBase)
 
                 }
             }
@@ -57,19 +51,22 @@ class CountryDetailsActivity : AppCompatActivity() {
     }
 
     fun insertCountryDetails(countryBase : Base?) {
-        tvLatitude.text = "(${countryBase?.latlng}°,"
-        tvLongitude.text = " ${countryBase?.latlng}°)"
+        tvLatitude.text = "(${countryBase?.latlng?.get(0)}°,"
+        tvLongitude.text = " ${countryBase?.latlng?.get(1)}°)"
         tvCapital.text = "${countryBase?.capital}"
-        tvPopulation.text = "Population: ${countryBase?.population}°C"
-        tvSize.text = "Area: ${countryBase?.area}%"
+        tvPopulation.text = "Population: ${countryBase?.population}"
+        tvSize.text = "Total Area: ${countryBase?.area}"
     }
 
-    fun insertFlagIcons(flagIcon : String?) {
-        Glide.with(this@CountryDetailsActivity).load(
-            (flagIcon)).into(ivFlagIconLeft)
+    fun insertFlagIcons(countryBase : Base?) {
+        val flagIcon = "https://www.countryflags.io/" +
+                countryBase?.alpha2Code.toString() + "/flat/64.png"
 
         Glide.with(this@CountryDetailsActivity).load(
-            (flagIcon)).into(ivFlagIconRight)
+            flagIcon).into(ivFlagIconLeft)
+
+        Glide.with(this@CountryDetailsActivity).load(
+            flagIcon).into(ivFlagIconRight)
     }
 
 }
