@@ -5,6 +5,305 @@
     <string-array name="chart_categories">
         <item>EU</item>
         <item>Mercosur</item>
+        <item>Roman Empire</item>
+        <item>USSR</item>
+        <item>Yugoslavia</item>
+        <item>Nazi Occupied</item>
+        <item>Austro-Hungarian Empire</item>
+        <item>Ottoman Ruled</item>
+        <item>Mongol Empire</item>
+        <item>British Empire</item>
+        <item>Have Made Moon Visits (via probes)</item>
+        <item>Countries with More Than 100 Million People</item>
+        <item>Countries with Less Than 1 Million People</item>
+=    </string-array>
+
+    <string name="Countries_with_Less_Than_1_Million_People">There are not many countries with.</string>
+    <string-array name="Countries_with_Less_Than_1_Million_People">
+        <item>Holy See (Vatican City State)</item>
+        <item>Tuvalu</item>
+        <item>Nauru</item>
+        <item>Palau</item>
+        <item>San Marino</item>
+        <item>Monaco</item>
+        <item>Liechtenstein</item>
+        <item>Saint Kitts and Nevis</item>
+        <item>Marshall Islands</item>
+        <item>Dominica</item>
+        <item>Andorra</item>
+        <item>Seychelles</item>
+        <item>Antigua and Barbuda</item>
+        <item>Tonga</item>
+        <item>Micronesia</item>
+        <item>Saint Vincent and the Grenadines</item>
+        <item>Grenada</item>
+        <item>Kiribati</item>
+        <item>Saint Lucia</item>
+        <item>Samoa</item>
+        <item>Sao Tome and Principe</item>
+        <item>Barbados</item>
+        <item>Vanuatu</item>
+        <item>Iceland</item>
+        <item>Maldives</item>
+        <item>Bahamas</item>
+        <item>Belize</item>
+        <item>Brunei</item>
+        <item>Malta</item>
+        <item>Cape Verde</item>
+        <item>Suriname</item>
+        <item>Western Sahara</item>
+        <item>Luxembourg</item>
+        <item>Montenegro</item>
+        <item>Solomon Islands</item>
+        <item>Bhutan</item>
+        <item>Guyana</item>
+        <item>Cyprus</item>
+        <item>Comoros</item>
+        <item>Fiji</item>
+    </string-array>
+
+    <string name="Countries_with_More_Than_100_Million_People">There are very few countries that.</string>
+    <string-array name="Countries_with_More_Than_100_Million_People">
+        <item>China</item>
+        <item>India</item>
+        <item>United States</item>
+        <item>Indonesia</item>
+        <item>Brazil</item>
+        <item>Pakistan</item>
+        <item>Nigeria</item>
+        <item>Bangladesh</item>
+        <item>Russia</item>
+        <item>Mexico</item>
+        <item>Japan</item>
+        <item>Ethiopia</item>
+        <item>Philippines</item>
+    </string-array>
+
+    <string name="Have_Made_Moon_Visits_via_probes">The United States is the only country to have ever put people on the moon. However, Russia (the USSR), Japan, China, the European Space Agency, and India have all made visits to the moon via probes.</string>
+    <string-array name="Have_Made_Moon_Visits_via_probes">
+        <item>Russia</item>
+        <item>Japan</item>
+        <item>China</item>
+        <item>India</item>
+    </string-array>
+
+    <string name="British_Empire"></string>
+    <string-array name="British_Empire">
+        <item>Afghanistan</item>
+        <item>Antigua and Barbuda</item>
+        <item>Australia</item>
+        <item>Bahamas</item>
+        <item>Bahrain</item>
+        <item>Barbados</item>
+        <item>Belize</item>
+        <item>Botswana</item>
+        <item>Brunei</item>
+        <item>Canada</item>
+        <item>Cyprus</item>
+        <item>Dominica</item>
+        <item>Egypt</item>
+        <item>Fiji</item>
+        <item>Gambia</item>
+        <item>Ghana</item>
+        <item>Grenada</item>
+        <item>India</item>
+        <item>Iraq</item>
+        <item>Jamaica</item>
+        <item>Jordan</item>
+        <item>Kenya</item>
+        <item>Kiribati</item>
+        <item>Kuwait</item>
+        <item>Lesotho</item>
+        <item>Malawi</item>
+        <item>Malaysia</item>
+        <item>Maldives</item>
+        <item>Malta</item>
+        <item>Mauritius</item>
+        <item>Myanmar</item>
+        <item>Nauru</item>
+        <item>New Zealand</item>
+        <item>Nigeria</item>
+        <item>Pakistan</item>
+        <item>Qatar</item>
+        <item>Saint Lucia</item>
+        <item>Saint Kitts and Nevis</item>
+        <item>Saint Vincent and the Grenadines</item>
+        <item>Seychelles</item>
+        <item>Sierra Leone</item>
+        <item>Solomon Islands</item>
+        <item>South Africa</item>
+        <item>Sri Lanka</item>
+        <item>Sudan</item>
+        <item>Swaziland</item>
+        <item>Tanzania</item>
+        <item>Tonga</item>
+        <item>Trinidad and Tobago</item>
+        <item>Tuvalu</item>
+        <item>Uganda</item>
+        <item>United Arab Emirates</item>
+        <item>United States</item>
+        <item>Vanuatu</item>
+        <item>Yemen</item>
+        <item>Zambia</item>
+        <item>Zimbabwe</item>
+    </string-array>
+
+    <string name="Mongol_Empire">The Mongol Empire was founded by Genghis Khan, a Mongol political and military leader who sometimes brutally conquered and united the Mongol tribes.</string>
+    <string-array name="Mongol_Empire">
+        <item>China</item>
+        <item>Mongolia</item>
+        <item>Russia</item>
+        <item>Azerbaijan</item>
+        <item>Armenia</item>
+        <item>Georgia</item>
+        <item>Iraq</item>
+        <item>Turkey</item>
+        <item>Kazakhstan</item>
+        <item>Kyrgyzstan</item>
+        <item>Uzbekistan</item>
+        <item>Pakistan</item>
+        <item>Tajikistan</item>
+        <item>Turkmenistan</item>
+        <item>Moldova</item>
+        <item>South Korea</item>
+        <item>North Korea</item>
+        <item>Kuwait</item>
+    </string-array>
+
+    <string name="Ottoman_Ruled">The Ottoman Empire was a Muslim empire that lasted from c. 1299 to 1922. It was also known by its European contemporaries as the Turkish Empire or Turkey after the principal ethnic group. At its zenith from the sixteenth to eighteenth centuries it controlled Southeast Europe, Southwest Asia and North Africa.</string>
+    <string-array name="Ottoman_Ruled">
+        <item>Albania</item>
+        <item>Algeria</item>
+        <item>Armenia</item>
+        <item>Bosnia and Herzegovina</item>
+        <item>Bulgaria</item>
+        <item>Cyprus</item>
+        <item>Egypt</item>
+        <item>Eritrea</item>
+        <item>Greece</item>
+        <item>Hungary</item>
+        <item>Iraq</item>
+        <item>Jordan</item>
+        <item>Kosovo</item>
+        <item>Libya</item>
+        <item>Macedonia</item>
+        <item>Montenegro</item>
+        <item>Palestine</item>
+        <item>Serbia</item>
+        <item>Syria</item>
+        <item>Sudan</item>
+        <item>Tunisia</item>
+        <item>Turkey</item>
+        <item>Ukraine</item>
+    </string-array>
+
+    <string name="Austro_Hungarian_Empire">The former Austro-Hungarian Empire was spread over a large part of Central Europe.</string>
+    <string-array name="Austro_Hungarian_Empire">
+        <item>Czechia</item>
+        <item>Slovakia</item>
+        <item>Slovenia</item>
+        <item>Bosnia and Herzegovina</item>
+        <item>Croatia</item>
+        <item>Poland</item>
+        <item>Romania</item>
+        <item>Italy</item>
+        <item>Austria</item>
+        <item>Hungary</item>
+        <item>Ukraine</item>
+        <item>Moldova</item>
+        <item>Serbia</item>
+        <item>Montenegro</item>
+    </string-array>
+
+    <string name="Nazi_Occupied">German-occupied Europe refers to the sovereign countries of Europe which were occupied and civil occupied including puppet government by the military forces and the government of Nazi Germany at various times between 1939 and 1945, during and shortly before World War II, generally administered by the Nazi regime.</string>
+    <string-array name="Nazi_Occupied">
+        <item>Albania</item>
+        <item>Czechia</item>
+        <item>Slovakia</item>
+        <item>Austria</item>
+        <item>France</item>
+        <item>Luxembourg</item>
+        <item>Belgium</item>
+        <item>Denmark</item>
+        <item>Greece</item>
+        <item>Hungary</item>
+        <item>Italy</item>
+        <item>Norway</item>
+        <item>Netherlands</item>
+        <item>Montenegro</item>
+        <item>Croatia</item>
+        <item>Macedonia</item>
+        <item>Serbia</item>
+        <item>Monaco</item>
+        <item>Finland</item>
+        <item>Lithuania</item>
+        <item>Poland</item>
+        <item>San Marino</item>
+        <item>Serbia</item>
+        <item>Ukraine</item>
+    </string-array>
+
+    <string name="Yugoslavia">Yugoslavia was a country in Southeastern and Central Europe for most of the 20th century. Serbia contained two Socialist Autonomous Provinces, Vojvodina and Kosovo, which after 1974 were largely equal to the other members of the federation. Kosovo proclaimed its independence from Serbia in 2008.</string>
+    <string-array name="Yugoslavia">
+        <item>Bosnia and Herzegovina</item>
+        <item>Croatia</item>
+        <item>Macedonia</item>
+        <item>Montenegro</item>
+        <item>Serbia</item>
+        <item>Slovenia</item>
+    </string-array>
+
+    <string name="USSR">The USSR.</string>
+    <string-array name="USSR">
+        <item>Armenia</item>
+        <item>Moldova</item>
+        <item>Estonia</item>
+        <item>Latvia</item>
+        <item>Lithuania</item>
+        <item>Georgia</item>
+        <item>Azerbaijan</item>
+        <item>Tajikstan</item>
+        <item>Kyrgystan</item>
+        <item>Belarus</item>
+        <item>Uzbekistan</item>
+        <item>Turkmenistan</item>
+        <item>Ukraine</item>
+        <item>Kazakhstan</item>
+        <item>Russia</item>
+    </string-array>
+
+    <string name="Roman_Empire">The Roman Empire was one of the most important civilizations of the world history.</string>
+    <string-array name="Roman_Empire">
+        <item>United Kingdom</item>
+        <item>Portugal</item>
+        <item>Spain</item>
+        <item>France</item>
+        <item>Italy</item>
+        <item>Austria</item>
+        <item>Switzerland</item>
+        <item>Luxembourg</item>
+        <item>Belgium</item>
+        <item>Romania</item>
+        <item>Moldova</item>
+        <item>Ukraine</item>
+        <item>Libya</item>
+        <item>Tunisia</item>
+        <item>Algeria</item>
+        <item>Morocco</item>
+        <item>Egypt</item>
+        <item>Albania</item>
+        <item>Greece</item>
+        <item>Hungary</item>
+        <item>Bosnia and Herzegovina</item>
+        <item>Slovenia</item>
+        <item>Croatia</item>
+        <item>Bulgaria</item>
+        <item>Turkey</item>
+        <item>Syria</item>
+        <item>Lebanon</item>
+        <item>Iraq</item>
+        <item>Jordan</item>
+        <item>Palestine</item>
     </string-array>
 
     <string name="EU">The European Union is a political and economic union of 28 member states that are located primarily in Europe. For the time being, the United Kingdom remains a full member of the EU.</string>

@@ -44,11 +44,11 @@ class ChartDialog : DialogFragment() {
 
         spinnerCharts = dialogView.spinnerCharts
 
-        val countriesAdapter = ArrayAdapter.createFromResource(
+        val chartsAdapter = ArrayAdapter.createFromResource(
             activity as Context,
             R.array.chart_categories,
             android.R.layout.simple_spinner_item)
-        spinnerCharts.adapter = countriesAdapter
+        spinnerCharts.adapter = chartsAdapter
 
         dialogBuilder.setView(dialogView)
         dialogBuilder.setPositiveButton("Ok") { dialog, which -> }
