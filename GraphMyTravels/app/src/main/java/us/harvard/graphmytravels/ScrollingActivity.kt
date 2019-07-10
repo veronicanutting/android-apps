@@ -2,15 +2,13 @@ package us.harvard.graphmytravels
 
 import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuItem
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_scrolling.*
 import us.harvard.graphmytravels.adapter.CountryAdapter
 
-class ScrollingActivity : AppCompatActivity(), CountryDialog.CountryHandler {
+class ScrollingActivity : AppCompatActivity(), CountryDialog.CountryHandler, ChartDialog.ChartHandler {
 
     lateinit var countryAdapter : CountryAdapter
 
@@ -19,9 +17,8 @@ class ScrollingActivity : AppCompatActivity(), CountryDialog.CountryHandler {
         setContentView(R.layout.activity_scrolling)
         setSupportActionBar(toolbar)
 
-        fabGenerateGraph.setOnClickListener { view ->
-            Snackbar.make(view, "Generate graph", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+        fabGenerateGraph.setOnClickListener {
+            ChartDialog().show(supportFragmentManager, "Dialog")
         }
 
         fabAddCountry.setOnClickListener {
@@ -46,6 +43,11 @@ class ScrollingActivity : AppCompatActivity(), CountryDialog.CountryHandler {
 
     override fun countryCreated(country: String) {
         countryAdapter.addCountry(country)
+    }
+
+    override fun chartCreated(chart: String) {
+        Toast.makeText(this, "Chart ${chart} created", Toast.LENGTH_LONG).show()
+
     }
 
 }
